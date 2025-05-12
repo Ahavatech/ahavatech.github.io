@@ -1,35 +1,27 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import path, { dirname } from "path";
-import { fileURLToPath } from "url";
+import { resolve } from "path";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-export default defineConfig(() => {
-  return {
-    plugins: [react()],
-    base: '/',
-    resolve: {
-      alias: {
-        "@": path.resolve(__dirname, "src"),
-        "@shared": path.resolve(__dirname, "../shared"),
-      },
-    },
-    root: __dirname,
-    build: {
-      outDir: path.resolve(__dirname, "dist"),
-      emptyOutDir: true,
-    },
-    server: {
-      host: true,
-      proxy: {
-        '/api': {
-          target: process.env.VITE_API_URL || 'http://localhost:3000',
-          changeOrigin: true,
-          secure: false,
-        },
-      },
-    },
-  };
+export default defineConfig({
+  plugins: [react()],
+  base: './', // Changed for proper relative paths
+  resolve: {
+    alias: [
+      { find: '@', replacement: resolve(__dirname, 'src') },
+      { find: '@assets', replacement: resolve(__dirname, 'src/assets') },
+      { find: '@components', replacement: resolve(__dirname, 'src/components') },
+      { find: '@pages', replacement: resolve(__dirname, 'src/pages') },
+      { find: '@layouts', replacement: resolve(__dirname, 'src/layouts') }
+      { find: '@hooks', replacement: resolve(__dirname, 'src/hooks') }
+    ]
+  },
+  build: {
+    outDir: resolve(__dirname, 'dist'),
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html')
+      }
+    }
+  }
 });

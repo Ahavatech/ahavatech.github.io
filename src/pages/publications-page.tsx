@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { PublicationForm } from '@/components/PublicationForm';
-import { PublicationList } from '@/components/PublicationList';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { apiRequest, queryClient } from '@/lib/queryClient';
-import { useToast } from '@/hooks/use-toast';
+import { useQuery } from '..tanstack/react-query';
+import { PublicationForm } from '@components/PublicationForm';
+import { PublicationList } from '@components/PublicationList';
+import { Button } from '@components/ui/button';
+import { Card } from '@components/ui/card';
+import { apiRequest, queryClient } from '../lib/queryClient';
+import { useToast } from '@hooks/use-toast';
 
 export function PublicationsPage() {
   const { toast } = useToast();

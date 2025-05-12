@@ -1,16 +1,16 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery, useMutation } from "..tanstack/react-query";
 import { useParams, useLocation } from "wouter";
-import { apiRequest, queryClient } from "@/lib/queryClient";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent } from "@/components/ui/card";
+import { apiRequest, queryClient } from "../lib/queryClient";
+import { Button } from "@components/ui/button";
+import { Input } from "@components/ui/input";
+import { Textarea } from "@components/ui/textarea";
+import { useToast } from "@hooks/use-toast";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/ui/tabs";
+import { Card, CardContent } from "@components/ui/card";
 import { Loader2, ArrowLeft, Trash2, Save } from "lucide-react";
-import { Course, CourseMaterial } from "@shared/schema";
+import { Course, CourseMaterial } from "..shared/schema";
 import { useState, useEffect } from "react";
-import { CourseMaterialUpload } from "@/components/course-material-upload";
+import { CourseMaterialUpload } from "@components/course-material-upload";
 
 export default function CourseDetailPage() {
   const { id } = useParams<{ id: string }>();

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Publication } from '@shared/schema';
+import { Publication } from '..shared/schema';
 
 interface Author {
   name: string;

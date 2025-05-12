@@ -1,5 +1,5 @@
 import React from 'react';
-import { Publication } from '@shared/schema';
+import { Publication } from '..shared/schema';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
 import { Pencil, Trash2 } from 'lucide-react';

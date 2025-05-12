@@ -1,27 +1,26 @@
-import { useAuth } from "@/hooks/use-auth";
+import { useAuth } from "@hooks/use-auth";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useLocation, Link } from "wouter";
-import { apiRequest, queryClient } from "@/lib/queryClient";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useToast } from "@/hooks/use-toast";
+import { apiRequest, queryClient } from "../lib/queryClient";
+import { Button } from "@components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/ui/tabs";
+import { useToast } from "@hooks/use-toast";
 import { LogOut, Trash2, ChevronRight, Pencil, Settings } from "lucide-react";
-import { CourseForm } from "@/components/CourseForm";
-import { ProfileForm } from "@/components/ProfileForm";
-import { PublicationForm } from "@/components/PublicationForm";
-import { PublicationList } from "@/components/PublicationList";
-import { UpcomingTalkForm } from "@/components/UpcomingTalkForm";
-import { EventList } from "@/components/EventList";
-import { Course, Publication } from "@shared/schema";
+import { CourseForm } from "@components/CourseForm";
+import { ProfileForm } from "@components/ProfileForm";
+import { PublicationForm } from "@components/PublicationForm";
+import { PublicationList } from "@components/PublicationList";
+import { UpcomingTalkForm } from "@components/UpcomingTalkForm";
+import { EventList } from "@components/EventList";
+import { Course, Publication } from "../../shared/schema";
 import { useState } from "react";
-import { AdminCredentialsForm } from "@/components/AdminCredentialsForm";
-import { AdminSettings } from "@/components/AdminSettings";
+import { AdminCredentialsForm } from "@components/AdminCredentialsForm";
+import { AdminSettings } from "@components/AdminSettings";
 
-const baseURL = import.meta.env.VITE_API_BASE_URL;
-interface PublicationWithId extends Publication {
-  _id: string;
-}
+//const baseURL = import.meta.env.VITE_API_BASE_URL;
+// Remove this interface and import it instead
+import { PublicationWithId } from "../types/publication";
 
 export default function AdminPage() {
   const { user, logoutMutation } = useAuth();

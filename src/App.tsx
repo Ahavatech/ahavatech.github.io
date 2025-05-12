@@ -1,16 +1,16 @@
 import { HashRouter as Routes, Route, Link } from "react-router-dom";
 import { queryClient } from "./lib/queryClient";
-import { QueryClientProvider, useQuery } from "@tanstack/react-query";
-import { Toaster } from "@/components/ui/toaster";
-import { AuthProvider, useAuth } from "@/hooks/use-auth";
-import { ProtectedRoute } from "@/lib/protected-route";
-import NotFound from "@/pages/not-found";
-import HomePage from "@/pages/home-page";
-import AuthPage from "@/pages/auth-page";
-import AdminPage from "@/pages/admin-page";
-import TestPage from "@/pages/test-page";
-import CourseDetailPage from "@/pages/course-detail-page";
-import { Profile } from "@shared/schema";
+import { QueryClientProvider, useQuery } from "..tanstack/react-query";
+import { Toaster } from "@components/ui/toaster";
+import { AuthProvider, useAuth } from "@hooks/use-auth";
+import { ProtectedRoute } from "../lib/protected-route";
+import NotFound from "../pages/not-found";
+import HomePage from "../pages/home-page";
+import AuthPage from "../pages/auth-page";
+import AdminPage from "../pages/admin-page";
+import TestPage from "../pages/test-page";
+import CourseDetailPage from "../pages/course-detail-page";
+import { Profile } from "..shared/schema";
 
 function Navbar() {
   const { user, logoutMutation } = useAuth();

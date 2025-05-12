@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { UpcomingTalkForm } from '@/components/UpcomingTalkForm';
-import { EventList } from '@/components/EventList';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { useQuery } from '..tanstack/react-query';
+import { UpcomingTalkForm } from '@components/UpcomingTalkForm';
+import { EventList } from '@components/EventList';
+import { Button } from '@components/ui/button';
+import { Card } from '@components/ui/card';
 
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 

@@ -1,10 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import { type Profile } from "@shared/schema";
-import ProfileHero from "@/components/profile-hero";
-import ResearchSection from "@/components/research-section";
-import CoursesSection from "@/components/courses-section";
-import ConferencesSection from "@/components/conferences-section";
-import { Skeleton } from "@/components/ui/skeleton";
+import { useQuery } from "..tanstack/react-query";
+import { type Profile } from "..shared/schema";
+import ProfileHero from "@components/profile-hero";
+import ResearchSection from "@components/research-section";
+import CoursesSection from "@components/courses-section";
+import ConferencesSection from "@components/conferences-section";
+import { Skeleton } from "@components/ui/skeleton";
 
 export default function HomePage() {
   const { data: profile, isLoading } = useQuery<Profile>({

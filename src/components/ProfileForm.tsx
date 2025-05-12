@@ -1,13 +1,13 @@
 import { useState, useCallback, useEffect } from "react";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { apiRequest, queryClient } from "@/lib/queryClient";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
+import { useMutation, useQuery } from "..tanstack/react-query";
+import { apiRequest, queryClient } from "../lib/queryClient";
+import { Button } from "@components/ui/button";
+import { Input } from "@components/ui/input";
+import { Textarea } from "@components/ui/textarea";
+import { useToast } from "@hooks/use-toast";
 import { Loader2, Upload } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Profile } from "@shared/schema";
+import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar";
+import { Profile } from "..shared/schema";
 
 export function ProfileForm() {
   const { toast } = useToast();

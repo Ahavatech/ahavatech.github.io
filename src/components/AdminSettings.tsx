@@ -1,5 +1,5 @@
-import { AdminCredentialsForm } from "@/components/AdminCredentialsForm";
-import { Button } from "@/components/ui/button";
+import { AdminCredentialsForm } from "@components/AdminCredentialsForm";
+import { Button } from "@components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
 interface AdminSettingsProps {

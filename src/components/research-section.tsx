@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import { type Publication } from "@shared/schema";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
+import { useQuery } from "..tanstack/react-query";
+import { type Publication } from "..shared/schema";
+import { Card, CardHeader, CardTitle, CardContent } from "@components/ui/card";
+import { Skeleton } from "@components/ui/skeleton";
 
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 interface PublicationWithId extends Publication {

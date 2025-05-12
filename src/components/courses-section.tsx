@@ -1,12 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
-import { type Course, type CourseMaterial } from "@shared/schema";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Button } from "@/components/ui/button";
+import { useQuery } from "..tanstack/react-query";
+import { type Course, type CourseMaterial } from "..shared/schema";
+import { Card, CardHeader, CardTitle, CardContent } from "@components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/ui/tabs";
+import { Button } from "@components/ui/button";
 import { FileDown, Presentation, FileText, BookOpen, Download } from "lucide-react";
-import { Skeleton } from "@/components/ui/skeleton";
-import { apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
+import { Skeleton } from "@components/ui/skeleton";
+import { apiRequest } from "../lib/queryClient";
+import { useToast } from "@hooks/use-toast";
 
 export default function CoursesSection() {
   const { data: courses, isLoading } = useQuery<Course[]>({

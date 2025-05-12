@@ -1,9 +1,9 @@
-import { useAuth } from "../hooks/use-auth";
+import { useAuth } from "@hooks/use-auth";
 
 import { useForm } from "react-hook-form";
 import { useEffect, useCallback } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { insertUserSchema, type InsertUser } from "../shared/schema";
+import { zodResolver } from "..hookform/resolvers/zod";
+import { insertUserSchema, type InsertUser } from "../../shared/schema";
 import { useLocation } from "wouter";
 import {
   Card,
@@ -11,8 +11,8 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+} from "@components/ui/card";
+import { Button } from "@components/ui/button";
 import {
   Form,
   FormControl,
@@ -20,9 +20,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+} from "@components/ui/form";
+import { Input } from "@components/ui/input";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/ui/tabs";
 import { Loader2 } from "lucide-react";
 
 export default function AuthPage() {

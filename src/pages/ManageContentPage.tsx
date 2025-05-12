@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Publication, UpcomingTalk } from '@shared/schema';
-import { PublicationForm } from '@/components/PublicationForm';
-import { PublicationList } from '@/components/PublicationList';
-import { UpcomingTalkForm } from '@/components/UpcomingTalkForm';
-import { EventList } from '@/components/EventList';
-import { apiRequest } from '@/lib/queryClient';
-import { useToast } from '@/hooks/use-toast';
+import { Publication, UpcomingTalk } from '..shared/schema';
+import { PublicationForm } from '@components/PublicationForm';
+import { PublicationList } from '@components/PublicationList';
+import { UpcomingTalkForm } from '@components/UpcomingTalkForm';
+import { EventList } from '@components/EventList';
+import { apiRequest } from '../lib/queryClient';
+import { useToast } from '@hooks/use-toast';
 
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
