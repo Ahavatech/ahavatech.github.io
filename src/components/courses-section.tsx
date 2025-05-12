@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/ui/tabs";
 import { Button } from "@components/ui/button";
 import { FileDown, Presentation, FileText, BookOpen, Download } from "lucide-react";
 import { Skeleton } from "@components/ui/skeleton";
-import { apiRequest } from "../lib/queryClient";
+import { apiRequest } from "@lib/queryClient";
 import { useToast } from "@hooks/use-toast";
 
 export default function CoursesSection() {

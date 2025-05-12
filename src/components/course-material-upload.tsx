@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { apiRequest, queryClient } from "../lib/queryClient";
+import { apiRequest, queryClient } from "@lib/queryClient";
 import { Button } from "@components/ui/button";
 import { Input } from "@components/ui/input";
 import { useToast } from "@hooks/use-toast";

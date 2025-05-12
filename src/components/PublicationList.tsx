@@ -1,7 +1,7 @@
 import React from 'react';
 import { Publication } from '..shared/schema';
-import { Card } from './ui/card';
-import { Button } from './ui/button';
+import { Card } from '@components/ui/card';
+import { Button } from '@components/ui/button';
 import { Pencil, Trash2 } from 'lucide-react';
 
 interface PublicationWithId extends Publication {

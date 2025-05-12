@@ -4,7 +4,7 @@ import { PublicationForm } from '@components/PublicationForm';
 import { PublicationList } from '@components/PublicationList';
 import { Button } from '@components/ui/button';
 import { Card } from '@components/ui/card';
-import { apiRequest, queryClient } from '../lib/queryClient';
+import { apiRequest, queryClient } from '@lib/queryClient';
 import { useToast } from '@hooks/use-toast';
 
 export function PublicationsPage() {

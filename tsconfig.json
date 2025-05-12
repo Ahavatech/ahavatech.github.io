@@ -19,6 +19,7 @@
       "@components/*": ["./src/components/*"],
       "@pages/*": ["./src/pages/*"],
       "@layouts/*": ["./src/layouts/*"],
+      "@lib/*": ["./src/lib/*"],
       "@hooks/*": ["./src/hooks/*"]
     }
   },

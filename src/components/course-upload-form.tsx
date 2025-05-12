@@ -1,14 +1,14 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "..hookform/resolvers/zod";
-import { useMutation, useQueryClient } from "..tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { insertMaterialSchema, type InsertMaterial } from "..shared/schema";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { useToast } from "./ui/use-toast";
-import { apiRequest } from "../lib/api";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@components/ui/form";
+import { Input } from "@components/ui/input";
+import { Button } from "@components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@components/ui/select";
+import { useToast } from "@components/ui/use-toast";
+import { apiRequest } from "@lib/api";
 
 export default function CourseUploadForm({ courseId }: { courseId: string }) {
   const { toast } = useToast();

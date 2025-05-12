@@ -1,9 +1,9 @@
 import React from 'react';
 import { UpcomingTalk } from '..shared/schema';
-import { Card } from './ui/card';
-import { Button } from './ui/button';
+import { Card } from '@components/ui/card';
+import { Button } from '@components/ui/button';
 import { Pencil, Trash2 } from 'lucide-react';
-import { Badge } from './ui/badge';
+import { Badge } from '@components/ui/badge';
 
 interface EventWithId extends UpcomingTalk {
   _id: string;
