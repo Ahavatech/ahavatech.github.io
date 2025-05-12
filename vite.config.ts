@@ -14,7 +14,7 @@ export default defineConfig({
       { find: '@layouts', replacement: resolve(__dirname, 'src/layouts') },
       { find: '@hooks', replacement: resolve(__dirname, 'src/hooks') },
       { find: '@lib', replacement: resolve(__dirname, 'src/lib') },
-      { find: '@shared', replacement: resolve(__dirname, 'src/shared') }  // Fixed shared path
+      { find: '@shared', replacement: resolve(__dirname, 'src/shared') }
     ]
   },
   build: {
@@ -26,22 +26,12 @@ export default defineConfig({
       },
       output: {
         manualChunks: {
-          'vendor': [
-            '@tanstack/react-query',
-            '@hookform/resolvers/zod',
-            'react-hook-form',
-            'zod'
-          ]
+          'vendor': ['@hookform/resolvers/zod', 'react-hook-form', 'zod']
         }
       }
     }
   },
   optimizeDeps: {
-    include: [
-      '@tanstack/react-query',
-      '@hookform/resolvers/zod',
-      'react-hook-form',
-      'zod'
-    ]
+    include: ['@hookform/resolvers/zod', 'react-hook-form', 'zod']
   }
 });

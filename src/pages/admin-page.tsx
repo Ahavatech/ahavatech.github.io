@@ -13,7 +13,7 @@ import { PublicationForm } from "@components/PublicationForm";
 import { PublicationList } from "@components/PublicationList";
 import { UpcomingTalkForm } from "@components/UpcomingTalkForm";
 import { EventList } from "@components/EventList";
-import { Course, Publication } from "../@shared/schema";
+import { Course, Publication } from "@shared/schema";
 import { useState } from "react";
 import { AdminCredentialsForm } from "@components/AdminCredentialsForm";
 import { AdminSettings } from "@components/AdminSettings";
