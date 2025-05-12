@@ -26,12 +26,27 @@ export default defineConfig({
       },
       output: {
         manualChunks: {
-          'vendor': ['@hookform/resolvers/zod', 'react-hook-form', 'zod']
+          'vendor': ['@hookform/resolvers/zod', 'react-hook-form', 'zod'],
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'ui-vendor': ['@radix-ui/react-accordion', 'lucide-react'],
+          'query': ['@tanstack/react-query']
         }
       }
     }
   },
   optimizeDeps: {
-    include: ['@hookform/resolvers/zod', 'react-hook-form', 'zod']
+    include: [
+      '@hookform/resolvers/zod',
+      'react-hook-form',
+      'zod',
+      'react-router-dom',
+      '@radix-ui/react-accordion',
+      'lucide-react',
+      '@tanstack/react-query'
+    ]
+  },
+  server: {
+    port: 3000,
+    host: true
   }
 });
