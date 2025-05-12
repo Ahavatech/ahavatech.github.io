@@ -1,4 +1,4 @@
-import { useQuery, useMutation } from "..tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { useParams, useLocation } from "wouter";
 import { apiRequest, queryClient } from "@lib/queryClient";
 import { Button } from "@components/ui/button";

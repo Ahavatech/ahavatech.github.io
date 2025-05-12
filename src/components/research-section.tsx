@@ -1,4 +1,4 @@
-import { useQuery } from "..tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { type Publication } from "@shared/schema";
 import { Card, CardHeader, CardTitle, CardContent } from "@components/ui/card";
 import { Skeleton } from "@components/ui/skeleton";

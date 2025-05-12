@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useQuery } from '..tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { PublicationForm } from '@components/PublicationForm';
 import { PublicationList } from '@components/PublicationList';
 import { Button } from '@components/ui/button';

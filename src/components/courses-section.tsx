@@ -1,4 +1,4 @@
-import { useQuery } from "..tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { type Course, type CourseMaterial } from "@shared/schema";
 import { Card, CardHeader, CardTitle, CardContent } from "@components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/ui/tabs";
