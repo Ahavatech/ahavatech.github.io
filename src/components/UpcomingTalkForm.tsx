@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UpcomingTalk } from '..shared/schema';
+import { UpcomingTalk } from '@shared/schema';
 
 interface UpcomingTalkFormProps {
   onSubmit: (formData: FormData) => Promise<void>;

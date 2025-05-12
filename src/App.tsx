@@ -10,7 +10,7 @@ import AuthPage from "@pages/auth-page";
 import AdminPage from "@pages/admin-page";
 import TestPage from "@pages/test-page";
 import CourseDetailPage from "@pages/course-detail-page";
-import { Profile } from "..shared/schema";
+import { Profile } from "@shared/schema";
 
 function Navbar() {
   const { user, logoutMutation } = useAuth();

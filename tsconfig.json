@@ -20,7 +20,8 @@
       "@pages/*": ["./src/pages/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@lib/*": ["./src/lib/*"],
-      "@hooks/*": ["./src/hooks/*"]
+      "@hooks/*": ["./src/hooks/*"],
+      "@shared/*": ["./src/shared/*"]  // Fixed shared path to be under src directory
     }
   },
   "include": ["src"],

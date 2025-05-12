@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { type Conference, type UpcomingTalk } from "../shared/schema";
+import { type Conference, type UpcomingTalk } from "@shared/schema";
 import { Card, CardHeader, CardTitle, CardContent } from "@components/ui/card";
 import { Badge } from "@components/ui/badge";
 import { Calendar, MapPin } from "lucide-react";

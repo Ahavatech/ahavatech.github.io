@@ -8,7 +8,7 @@ import { useToast } from "@hooks/use-toast";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/ui/tabs";
 import { Card, CardContent } from "@components/ui/card";
 import { Loader2, ArrowLeft, Trash2, Save } from "lucide-react";
-import { Course, CourseMaterial } from "..shared/schema";
+import { Course, CourseMaterial } from "@shared/schema";
 import { useState, useEffect } from "react";
 import { CourseMaterialUpload } from "@components/course-material-upload";
 

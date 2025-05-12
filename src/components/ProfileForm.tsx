@@ -7,7 +7,7 @@ import { Textarea } from "@components/ui/textarea";
 import { useToast } from "@hooks/use-toast";
 import { Loader2, Upload } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar";
-import { Profile } from "..shared/schema";
+import { Profile } from "@shared/schema";
 
 export function ProfileForm() {
   const { toast } = useToast();

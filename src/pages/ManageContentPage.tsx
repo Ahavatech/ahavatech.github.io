@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Publication, UpcomingTalk } from '..shared/schema';
+import { Publication, UpcomingTalk } from '@shared/schema';
 import { PublicationForm } from '@components/PublicationForm';
 import { PublicationList } from '@components/PublicationList';
 import { UpcomingTalkForm } from '@components/UpcomingTalkForm';

@@ -1,4 +1,4 @@
-import { type Profile } from "..shared/schema";
+import { type Profile } from "@shared/schema";
 import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar";
 import { Mail, Phone, Building } from "lucide-react";
 

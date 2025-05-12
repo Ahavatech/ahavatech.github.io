@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { type Profile } from "..shared/schema";
+import { type Profile } from "@shared/schema";
 import ProfileHero from "@components/profile-hero";
 import ResearchSection from "@components/research-section";
 import CoursesSection from "@components/courses-section";

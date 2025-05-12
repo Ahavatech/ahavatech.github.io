@@ -3,7 +3,7 @@ import { useAuth } from "@hooks/use-auth";
 import { useForm } from "react-hook-form";
 import { useEffect, useCallback } from "react";
 import { zodResolver } from "..hookform/resolvers/zod";
-import { insertUserSchema, type InsertUser } from "../../shared/schema";
+import { insertUserSchema, type InsertUser } from "../@shared/schema";
 import { useLocation } from "wouter";
 import {
   Card,
