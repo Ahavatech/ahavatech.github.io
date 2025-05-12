@@ -12,7 +12,8 @@ export default defineConfig({
       { find: '@components', replacement: resolve(__dirname, 'src/components') },
       { find: '@pages', replacement: resolve(__dirname, 'src/pages') },
       { find: '@layouts', replacement: resolve(__dirname, 'src/layouts') },  // Added missing comma here
-      { find: '@hooks', replacement: resolve(__dirname, 'src/hooks') }
+      { find: '@hooks', replacement: resolve(__dirname, 'src/hooks') },
+      { find: '@lib', replacement: resolve(__dirname, 'src/lib') },
     ]
   },
   build: {
