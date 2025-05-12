@@ -24,5 +24,8 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html')
       }
     }
+  },
+  optimizeDeps: {
+    include: ['@tanstack/react-query']
   }
 });
