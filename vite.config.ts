@@ -4,7 +4,7 @@ import { resolve } from "path";
 
 export default defineConfig({
   plugins: [react()],
-  base: './',
+  base: '/ahavatech.github.io/',
   resolve: {
     alias: [
       { find: '@', replacement: resolve(__dirname, 'src') },
@@ -44,6 +44,9 @@ export default defineConfig({
       'lucide-react',
       '@tanstack/react-query'
     ]
+  },
+  define: {
+    'process.env.VITE_API_URL': JSON.stringify('oplayeni.onrender.com')
   },
   server: {
     port: 3000,
