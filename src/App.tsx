@@ -1,4 +1,4 @@
-import { HashRouter as Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import { queryClient } from "@lib/queryClient";
 import { QueryClientProvider, useQuery } from "@tanstack/react-query";
 import { Toaster } from "@components/ui/toaster";
@@ -31,12 +31,12 @@ function Navbar() {
 
 // Wrapper for admin-protected routes
 function AdminProtectedRoute({ children }: { children: JSX.Element }) {
-  return <ProtectedRoute requireAdmin>{children}</ProtectedRoute>;
+  return <ProtectedRoute path="" requireAdmin component={() => children} />;
 }
 
 function AppRoutes() {
   return (
-    <HashRouter>
+    <>
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -60,9 +60,10 @@ function AppRoutes() {
         <Route path="/test" element={<TestPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </HashRouter>
+    </>
   );
 }
+
 
 export default function App() {
   return (
