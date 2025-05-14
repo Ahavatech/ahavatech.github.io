@@ -116,6 +116,44 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
     },
   });
+    // ...existing logoutMutation code...
+
+  const registerMutation = useMutation({
+    mutationFn: async (userData: InsertUser) => {
+      const res = await fetch(`${API_URL}/api/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(userData),
+        credentials: "include"
+      });
+
+      if (!res.ok) {
+        const error = await res.text();
+        throw new Error(error || "Registration failed");
+      }
+
+      return res.json();
+    },
+    onSuccess: (user: SelectUser) => {
+      queryClient.setQueryData(["user"], user);
+      toast({
+        title: "Success",
+        description: "Registration successful",
+      });
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Registration failed",
+        description: error.message,
+        variant: "destructive",
+      });
+    },
+  });
+
+  // ...existing return statement...
 
   return (
     <AuthContext.Provider
