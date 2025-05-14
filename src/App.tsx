@@ -14,16 +14,43 @@ import { Profile } from "@shared/schema";
 
 function Navbar() {
   const { user, logoutMutation } = useAuth();
-  const { data: profile } = useQuery<Profile>({
-    queryKey: ["https://oplayeni.onrender.com/api/profile"],
+  const { data: profile, isLoading } = useQuery<Profile>({
+    queryKey: ["profile"],
+    queryFn: async () => {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/profile`, {
+        credentials: 'include'
+      });
+      if (!response.ok) {
+        throw new Error('Failed to fetch profile');
+      }
+      return response.json();
+    },
+    enabled: !!user // Only fetch profile when user is authenticated
   });
 
   return (
     <nav className="border-b">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link to="/" className="text-xl font-bold">
-          {profile?.name || "Loading..."}
+          {isLoading ? "Loading..." : profile?.name || "Guest"}
         </Link>
+        <div className="flex items-center gap-4">
+          {user ? (
+            <button
+              onClick={() => logoutMutation.mutate()}
+              className="text-sm text-gray-600 hover:text-gray-900"
+            >
+              Logout
+            </button>
+          ) : (
+            <Link
+              to="/auth"
+              className="text-sm text-gray-600 hover:text-gray-900"
+            >
+              Login
+            </Link>
+          )}
+        </div>
       </div>
     </nav>
   );

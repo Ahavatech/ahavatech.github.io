@@ -8,7 +8,7 @@ import { insertUserSchema, User as SelectUser, InsertUser } from "@shared/schema
 import { getQueryFn, apiRequest, queryClient } from "@lib/queryClient";
 import { useToast } from "@hooks/use-toast";
 
-const baseURL = import.meta.env.VITE_API_BASE_URL;
+const API_URL = import.meta.env.VITE_API_URL || 'https://oplayeni.onrender.com';
 
 type AuthContextType = {
   user: SelectUser | null;
@@ -22,47 +22,67 @@ type AuthContextType = {
 type LoginData = Pick<InsertUser, "username" | "password">;
 
 export const AuthContext = createContext<AuthContextType | null>(null);
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const { toast } = useToast();
   const {
     data: user,
     error,
     isLoading,
-  } = useQuery<SelectUser | undefined, Error>({
-    queryKey: ["https://oplayeni.onrender.com/api/user"],
-    queryFn: getQueryFn({ on401: "returnNull" }),
+  } = useQuery<SelectUser | null, Error>({
+    queryKey: ["user"],
+    queryFn: async () => {
+      try {
+        const res = await fetch(`${API_URL}/api/user`, {
+          credentials: 'include',
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (!res.ok) {
+          if (res.status === 401) {
+            console.log("[Auth] User not authenticated");
+            return null;
+          }
+          throw new Error("Failed to fetch user");
+        }
+        
+        return res.json();
+      } catch (error) {
+        console.error("[Auth] Error fetching user:", error);
+        return null;
+      }
+    },
+    staleTime: 1000 * 60 * 5, // Cache for 5 minutes
+    retry: false
   });
 
   const loginMutation = useMutation({
     mutationFn: async (credentials: LoginData) => {
-      try {
-        const res = await fetch(`https://oplayeni.onrender.com/api/login`, {  
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify(credentials),
-          credentials: "include"
-        });
+      const res = await fetch(`${API_URL}/api/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(credentials),
+        credentials: "include"
+      });
 
-        console.log("[Auth] Login response:", res);
-
-        if (!res.ok) {
-          const text = await res.text();
-          throw new Error(text || "Invalid credentials");
-        }
-
-        const data = await res.json();
-        console.log("[Auth] Login data:", data);
-        return data;
-      } catch (error: any) {
-        console.error("[Auth] Login error:", error);
-        throw new Error(error.message || "Login failed");
+      if (!res.ok) {
+        const error = await res.text();
+        throw new Error(error || "Invalid credentials");
       }
+
+      return res.json();
     },
     onSuccess: (user: SelectUser) => {
-      queryClient.setQueryData(["https://oplayeni.onrender.com/api/user"], user);
+      queryClient.setQueryData(["user"], user);
+      toast({
+        title: "Success",
+        description: "Logged in successfully",
+      });
     },
     onError: (error: Error) => {
       toast({
@@ -73,29 +93,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     },
   });
 
-  const registerMutation = useMutation({
-    mutationFn: async (credentials: InsertUser) => {
-      const res = await apiRequest("POST", "https://oplayeni.onrender.com/api/register", credentials);
-      return await res.json();
-    },
-    onSuccess: (user: SelectUser) => {
-      queryClient.setQueryData(["https://oplayeni.onrender.com/api/user"], user);
-    },
-    onError: (error: Error) => {
-      toast({
-        title: "Registration failed",
-        description: error.message,
-        variant: "destructive",
-      });
-    },
-  });
-
   const logoutMutation = useMutation({
     mutationFn: async () => {
-      await apiRequest("POST", "https://oplayeni.onrender.com/api/logout");
+      const res = await fetch(`${API_URL}/api/logout`, {
+        method: "POST",
+        credentials: "include"
+      });
+      if (!res.ok) throw new Error("Logout failed");
     },
     onSuccess: () => {
-      queryClient.setQueryData(["https://oplayeni.onrender.com/api/user"], null);
+      queryClient.setQueryData(["user"], null);
+      toast({
+        title: "Success",
+        description: "Logged out successfully",
+      });
     },
     onError: (error: Error) => {
       toast({
@@ -109,7 +120,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   return (
     <AuthContext.Provider
       value={{
-        user: user ?? null,
+        user,
         isLoading,
         error,
         loginMutation,

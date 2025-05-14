@@ -8,7 +8,7 @@ import { Skeleton } from "@components/ui/skeleton";
 
 export default function HomePage() {
   const { data: profile, isLoading } = useQuery<Profile>({
-    queryKey: ["/api/profile"],
+    queryKey: ["https://oplayeni.onrender.com/api/profile"],
   });
 
   if (isLoading || !profile) {
