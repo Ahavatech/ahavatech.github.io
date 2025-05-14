@@ -18,13 +18,16 @@ export default defineConfig({
     ]
   },
   build: {
-    outDir: resolve(__dirname, 'dist'),
+    outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html')
       },
       output: {
+        entryFileNames: 'assets/[name].[hash].js',
+        chunkFileNames: 'assets/[name].[hash].js',
+        assetFileNames: 'assets/[name].[hash].[ext]',
         manualChunks: {
           'vendor': ['@hookform/resolvers/zod', 'react-hook-form', 'zod'],
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
@@ -46,7 +49,7 @@ export default defineConfig({
     ]
   },
   define: {
-    'process.env.VITE_API_URL': JSON.stringify('oplayeni.onrender.com')
+    'process.env.VITE_API_URL': JSON.stringify('https://oplayeni.onrender.com')
   },
   server: {
     port: 3000,
