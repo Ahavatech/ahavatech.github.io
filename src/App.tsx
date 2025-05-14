@@ -25,32 +25,15 @@ function Navbar() {
       }
       return response.json();
     },
-    enabled: !!user // Only fetch profile when user is authenticated
+    enabled: !!user
   });
 
   return (
     <nav className="border-b">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link to="/" className="text-xl font-bold">
-          {isLoading ? "Loading..." : profile?.name || "Guest"}
+          {isLoading ? "Loading..." : profile?.name}
         </Link>
-        <div className="flex items-center gap-4">
-          {user ? (
-            <button
-              onClick={() => logoutMutation.mutate()}
-              className="text-sm text-gray-600 hover:text-gray-900"
-            >
-              Logout
-            </button>
-          ) : (
-            <Link
-              to="/auth"
-              className="text-sm text-gray-600 hover:text-gray-900"
-            >
-              Login
-            </Link>
-          )}
-        </div>
       </div>
     </nav>
   );
