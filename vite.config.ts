@@ -4,7 +4,7 @@ import { resolve } from "path";
 
 export default defineConfig({
   plugins: [react()],
-  base: '/ahavatech.github.io/',
+  base: './', // Changed for GitHub Pages compatibility
   resolve: {
     alias: [
       { find: '@', replacement: resolve(__dirname, 'src') },
@@ -27,7 +27,7 @@ export default defineConfig({
       output: {
         entryFileNames: 'assets/[name].[hash].js',
         chunkFileNames: 'assets/[name].[hash].js',
-        assetFileNames: 'assets/[name].[hash].[ext]',
+        assetFileNames: 'assets/[name].[ext]', // Removed hash for static assets
         manualChunks: {
           'vendor': ['@hookform/resolvers/zod', 'react-hook-form', 'zod'],
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
