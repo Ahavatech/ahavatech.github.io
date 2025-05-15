@@ -1,87 +1,62 @@
-import { Routes, Route, Link } from "react-router-dom";
-import { queryClient } from "@lib/queryClient";
-import { QueryClientProvider, useQuery } from "@tanstack/react-query";
-import { Toaster } from "@components/ui/toaster";
-import { AuthProvider, useAuth } from "@hooks/use-auth";
-import { ProtectedRoute } from "@lib/protected-route";
-import NotFound from "@pages/not-found";
-import HomePage from "@pages/home-page";
-import AuthPage from "@pages/auth-page";
-import AdminPage from "@pages/admin-page";
-import TestPage from "@pages/test-page";
-import CourseDetailPage from "@pages/course-detail-page";
+import { Switch, Route, Link } from "wouter";
+import { queryClient } from "./lib/queryClient";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "@/components/ui/toaster";
+import { AuthProvider } from "@/hooks/use-auth";
+import { ProtectedRoute } from "@/lib/protected-route";
+import NotFound from "@/pages/not-found";
+import HomePage from "@/pages/home-page";
+import AuthPage from "@/pages/auth-page";
+import AdminPage from "@/pages/admin-page";
+import TestPage from "@/pages/test-page";
+import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/use-auth";
+import CourseDetailPage from "@/pages/course-detail-page";
+import { useQuery } from "@tanstack/react-query";
 import { Profile } from "@shared/schema";
 
 function Navbar() {
   const { user, logoutMutation } = useAuth();
-  const { data: profile, isLoading } = useQuery<Profile>({
-    queryKey: ["profile"],
-    queryFn: async () => {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/profile`, {
-        credentials: 'include'
-      });
-      if (!response.ok) {
-        throw new Error('Failed to fetch profile');
-      }
-      return response.json();
-    },
-    enabled: !!user
+  const { data: profile } = useQuery<Profile>({
+    queryKey: ["/api/profile"],
   });
 
   return (
     <nav className="border-b">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <Link to="/" className="text-xl font-bold">
-          {isLoading ? "Loading..." : profile?.name}
+        <Link href="/" className="text-xl font-bold">
+          {profile?.name || "Loading..."}
         </Link>
       </div>
     </nav>
   );
 }
 
-// Wrapper for admin-protected routes
-function AdminProtectedRoute({ children }: { children: JSX.Element }) {
-  return <ProtectedRoute path="" requireAdmin component={() => children} />;
-}
-
-function AppRoutes() {
+function Router() {
   return (
     <>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/auth" element={<AuthPage />} />
-        <Route
-          path="/admin/dashboard"
-          element={
-            <AdminProtectedRoute>
-              <AdminPage />
-            </AdminProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/courses/:id"
-          element={
-            <AdminProtectedRoute>
-              <CourseDetailPage />
-            </AdminProtectedRoute>
-          }
-        />
-        <Route path="/test" element={<TestPage />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Switch>
+        <Route path="/" component={HomePage} />
+        <Route path="/auth" component={AuthPage} />
+        <ProtectedRoute path="/admin/dashboard" component={AdminPage} requireAdmin />
+        <ProtectedRoute path="/admin/courses/:id" component={CourseDetailPage} requireAdmin />
+        <Route path="/test" component={TestPage} />
+        <Route component={NotFound} />
+      </Switch>
     </>
   );
 }
 
-
-export default function App() {
+function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <AppRoutes />
+        <Router />
         <Toaster />
       </AuthProvider>
     </QueryClientProvider>
   );
 }
+
+export default App;
